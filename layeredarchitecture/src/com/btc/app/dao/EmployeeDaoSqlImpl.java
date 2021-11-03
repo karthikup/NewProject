@@ -25,7 +25,7 @@ public class EmployeeDaoSqlImpl implements EmployeeDao
 	public Employee addEmployee(Employee employee) throws SQLException {
 		String dateString = employee.getDob().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		
-		String query = "insert into empdb values(?,?,?,?)";
+		String query = "insert into employee values(?,?,?,?)";
 		
 		
 		smt= con.prepareStatement(query);
