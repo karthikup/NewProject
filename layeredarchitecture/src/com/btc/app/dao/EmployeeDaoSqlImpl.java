@@ -45,7 +45,7 @@ public class EmployeeDaoSqlImpl implements EmployeeDao
 
 	@Override
 	public Employee searchEmployeeById(int employeeId) throws SQLException {
-		String query="select * from empdb where employeeId=?";
+		String query="select * from employee where employeeId=?";
 		smt=con.prepareStatement(query);
 		
 		smt.setInt(1, employeeId);	
@@ -68,7 +68,7 @@ public class EmployeeDaoSqlImpl implements EmployeeDao
 
 	@Override
 	public boolean deleteEmployeeById(int employeeId) throws SQLException{
-		 String query = "delete from employee where empid=?";
+		 String query = "delete from employee where id=?";
 		   con=ConnectionUtil.getDbConnection();
 		   smt= con.prepareStatement(query);
 		   smt.setInt(1, employeeId);
@@ -86,7 +86,7 @@ public class EmployeeDaoSqlImpl implements EmployeeDao
 	public Employee updateEmployee(Employee employee) throws SQLException {
         
 		
-		String query = "UPDATE employee SET empid = ?,ename=? ,hiredate=?,email =? WHERE empid =?";
+		String query = "UPDATE employee SET id = ?,name=? ,dob=?,email =? WHERE id =?";
 		String dateString = employee.getDob().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		con=ConnectionUtil.getDbConnection();
 		smt= con.prepareStatement(query);
@@ -115,10 +115,10 @@ public class EmployeeDaoSqlImpl implements EmployeeDao
 		
 		if(rst.next()) {
 			Employee emp = new Employee();
-			emp.setEmployeeId(rst.getInt("empid"));
-			emp.setEmployeeName(rst.getString("ename"));
+			emp.setEmployeeId(rst.getInt("id"));
+			emp.setEmployeeName(rst.getString("name"));
 			emp.setEmail(rst.getString("email"));
-			String dateString=rst.getString("hiredate");
+			String dateString=rst.getString("dob");
 			emp.setDob(LocalDate.parse(dateString));
 			employee.add(emp);
 		}
