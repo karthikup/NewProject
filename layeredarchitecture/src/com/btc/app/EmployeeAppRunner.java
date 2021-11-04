@@ -12,7 +12,7 @@ public class EmployeeAppRunner
 		EmployeeAppUI appUI = null;
 		appUI = new EmployeeAppUI();
 		while (true) {
-			System.out.println("Enter a option :\n [1 - Add Employee] \n [2 - Search Employee] \n [3 - Delete Employee] \n [4 - Display all the Employee Details] \n[0 - Exit]");
+			System.out.println("Enter a option :\n [1 - Add Employee] \n [2 - Search Employee] \n [3 - Delete Employee] \n [4 - Display all the Employee Details] \n [ 5 - Update Employee] \n [0 - Exit]");
 			int option = scanner.nextInt();
 
 			switch (option) {
@@ -27,6 +27,9 @@ public class EmployeeAppRunner
 				break;
 			case 4:
 				appUI.listOfEmployee();
+				break;
+			case 5:
+				appUI.updateEmployee();
 				break;
 			case 0:
 				System.exit(1);
