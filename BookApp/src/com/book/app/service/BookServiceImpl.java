@@ -25,9 +25,9 @@ public class BookServiceImpl implements BookService{
 	
 
 	@Override
-	public Book recomandedService() {
-		// TODO Auto-generated method stub
-		return null;
+	public String recomandedService() throws Exception {
+		
+		return bookService.recomandedService();
 	}
 
 	@Override

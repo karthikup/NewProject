@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.book.app.model.Book;
+import com.book.app.ui.AuthorNotFoundException;
 
 
 
@@ -25,6 +26,7 @@ public class BookDaoImpl implements BookDao
 	{
 //		int bookId=0;
 		String query = "select * from Book where author_id = ?";
+		
 		smt=con.prepareStatement(query);
 		
 		smt.setInt(1, authorId);	
@@ -41,13 +43,21 @@ public class BookDaoImpl implements BookDao
 			b.setBookName(queryResult.getString("book_name"));
 			System.out.println(b);
 		}
+		while(queryResult.next())
+		{
+			if(queryResult.getInt("author_id")!=queryResult.findColumn("auhtor_id"))
+			{
+				throw new AuthorNotFoundException("Author Id not present in DB : "+authorId);
+				//System.out.println("Hi");
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public String FavouriteBooks() throws Exception {
 		String foundType="";
-		String query = "select distinct favourite_books from Book";
+		String query = "select distinct favourite_books from Favourite_books";
 		//String query = "select favourite_books, from Book where classid=? and absentdt>=? and absentdt<=";
 		smt=con.prepareStatement(query);
 		ResultSet queryResult = smt.executeQuery();
@@ -68,9 +78,19 @@ public class BookDaoImpl implements BookDao
 	}
 
 	@Override
-	public Book recomandedService() {
-		// TODO Auto-generated method stub
+	public String recomandedService() throws SQLException {
+		String foundType="";
+		String query = "select distinct recomanded_books from Recomanded_books";
+		//String query = "select favourite_books, from Book where classid=? and absentdt>=? and absentdt<=";
+		smt=con.prepareStatement(query);
+		ResultSet queryResult = smt.executeQuery();
+		while(queryResult.next())
+		{
+			String res =queryResult.getString("recomanded_books");
+			System.out.println(res);
+		}
 		return null;
+		
 	}
 
 

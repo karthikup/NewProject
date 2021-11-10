@@ -6,5 +6,5 @@ public interface BookService
 {
 	public String FavouriteBooks() throws Exception;
 	public Book searchByAuthor(int auhtorId) throws Exception;
-	public Book recomandedService();
+	public String recomandedService() throws Exception;
 }

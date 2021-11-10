@@ -3,11 +3,12 @@ package com.book.app.main;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import com.book.app.ui.AuthorNotFoundException;
 import com.book.app.ui.BookAppUi;
 
 public class BookAppRunner {
 
-	public static void main(String[] args) throws SQLException 
+	public static void main(String[] args) throws SQLException  
 	{
 		Scanner sc = new Scanner(System.in);
 		BookAppUi appUi=null;
@@ -22,7 +23,15 @@ public class BookAppRunner {
 					appUi.displayFavouriteBooks();
 					break;
 				case 2:
+				try {
 					appUi.searchAuthor();
+				} catch (AuthorNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+					break;
+				case 3:
+					appUi.displayRecomanded();
 					break;
 				case 0:
 					System.exit(1);

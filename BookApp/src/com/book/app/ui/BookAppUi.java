@@ -20,17 +20,31 @@ public class BookAppUi
 	
 
 	
-	public void searchAuthor()
+	public void searchAuthor() throws AuthorNotFoundException
 	{
 		System.out.println("Enter Author Details :  ");
 		System.out.print("Author ID : ");
-		int authorId=sc.nextInt();
-
+		int authorId=0;
 		Book book=null;
-		try {
+		try
+		{
+			authorId=sc.nextInt();
+			
+		}
+		catch(AuthorNotFoundException e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println("Handeled AuthorNotFoundException");
+			System.out.println("Invalid AuhtorId");
+			
+		}
+		
+		try 
+		{
 			book = bService.searchByAuthor(authorId);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) 
+		{
+			
 			e.printStackTrace();
 		}
 
@@ -53,5 +67,17 @@ public class BookAppUi
 		System.out.println(book);
 	}
 	
-	
+	public void displayRecomanded()
+	{
+		System.out.println("The Recomanded Books are : ");
+		String book=null;
+		try {
+			book = bService.recomandedService();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println(book);
+	}
 }
