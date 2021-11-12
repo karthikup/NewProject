@@ -6,15 +6,40 @@ import org.junit.jupiter.api.Test;
 
 import com.book.app.model.Book;
 
+
 class BookDaoImplTest {
 
-	//Book b = new Book(1000,"Mahabharath",10,"Vyasa");
+	Book b1 = new Book(1000,"Mahabharath",10,"Vyasa");
+	Book b = new Book();
+	
 	//BookDao book = new BookDaoImpl();
+
 	@Test
-	void searchByAuthorId() {
-//		fail("Not yet implemented");
-		Book b = new Book(1000,"Mahabharath",10,"Vyasa");
-		assertEquals(b,10);
+	void searchBookContents()//to test test the content of the added Books
+	{
+		//BookDaoImpl book = null;
+		
+
+		//Book list = null;
+		try {
+			BookDaoImpl book = null;
+			Book list = book.addBook(b);
+			
+			assertEquals(b1,b);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			e.getMessage();
+		}
+		
 	}
+	
+	@Test
+	void searchAuhtorId()
+	{
+		
+	}
+	
+	
 
 }

@@ -43,6 +43,16 @@ public class BookServiceImpl implements BookService{
 		return bookService.searchByAuthor(auhtorId);
 	}
 
+
+
+
+
+	@Override
+	public Book addBook(Book book) throws Exception {
+		
+		return bookService.addBook(book);
+	}
+
 	
 
 	

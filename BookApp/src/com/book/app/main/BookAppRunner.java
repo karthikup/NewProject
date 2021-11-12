@@ -30,14 +30,17 @@ public class BookAppRunner {
 		}
 		while(true)
 		{
-			System.out.println("Enter a option : \n [1 - Display Favourite Books] \n [2 - Search By Authors] \n [3 - Display Recomandation] \n [0 - Exit] \n" );
+			System.out.println("Enter a option : \n [1 - Add Books] \n [2 - Display Favourite Books] \n [3 - Search By Authors] \n [4 - Display Recomandation] \n [0 - Exit] \n" );
 			int option = sc.nextInt();
 			switch(option)
 			{
 				case 1:
-					appUi.displayFavouriteBooks();
+					appUi.addBooks();
 					break;
 				case 2:
+					appUi.displayFavouriteBooks();
+					break;
+				case 3:
 				try {
 					appUi.searchAuthor();
 				} catch (AuthorNotFoundException e) {
@@ -45,7 +48,7 @@ public class BookAppRunner {
 					e.printStackTrace();
 				}
 					break;
-				case 3:
+				case 4:
 					appUi.displayRecomanded();
 					break;
 				case 0:

@@ -19,7 +19,35 @@ public class BookAppUi
 		bService = new BookServiceImpl();
 	}
 	
-
+	public void addBooks()
+	{
+		int id = 0;
+		String bookName=null;
+		int authorId=0;
+		String authorName=null;
+		Book b = new Book();
+		System.out.println("Enter the Book Details :");
+		System.out.println("Enter the Book Id : ");
+		id = sc.nextInt();
+		System.out.println("Enter the Book Name : ");
+		bookName = sc.next()+sc.nextLine();
+		System.out.println("Enter the Auhtor Id : ");
+		authorId = sc.nextInt();
+		System.out.println("Enter the Author Name : ");
+		authorName = sc.next()+sc.nextLine();
+		Book book = new Book(id, bookName, authorId, authorName);
+		Book savedBook;
+		try
+		{
+			savedBook = bService.addBook(book);
+			System.out.println("Book Added Successfull!!");
+			System.out.println(savedBook);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
 	
 	public void searchAuthor() throws AuthorNotFoundException
 	{

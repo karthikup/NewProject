@@ -110,6 +110,24 @@ public class BookDaoImpl implements BookDao
 
 
 
+	@Override
+	public Book addBook(Book book) throws Exception {
+		String query = "insert into book values(?,?,?,?)";
+		smt = con.prepareStatement(query);
+		smt.setInt(1, book.getBookId());
+		smt.setString(2, book.getBookName());
+		smt.setInt(3, book.getAuthorId());
+		smt.setString(4, book.getAuthorName());
+		int rowCount = smt.executeUpdate();
+		if(rowCount>0)
+		{
+			return book;
+		}
+		return null;
+	}
+
+
+
 	
 	
 	
