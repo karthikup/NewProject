@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.book.app.model.Book;
 import com.book.app.ui.AuthorNotFoundException;
-
-
 
 public class BookDaoImpl implements BookDao 
 {
@@ -16,13 +16,17 @@ public class BookDaoImpl implements BookDao
 	
 	private PreparedStatement smt;
 	
+	
+	
 	public BookDaoImpl() throws SQLException
 	{
 		con=ConnectionUtil.getDbConnection();
 	}
 	
+	
+	
 	@Override
-	public Book searchByAuthor(int authorId) throws SQLException 
+	public List<Book> searchByAuthor(int authorId) throws SQLException 
 	{
 //		int bookId=0;
 		String query = "select * from Book where author_id = ?";
@@ -34,6 +38,7 @@ public class BookDaoImpl implements BookDao
 		ResultSet queryResult = smt.executeQuery();
 		
 		Book b=null;
+		List<Book> list = new ArrayList<>();
 		while(queryResult.next())
 		{
 			b = new Book();
@@ -41,7 +46,8 @@ public class BookDaoImpl implements BookDao
 			b.setAuthorName(queryResult.getString("author_name"));
 			b.setBookId(queryResult.getInt("book_id"));
 			b.setBookName(queryResult.getString("book_name"));
-			System.out.println(b);
+			list.add(b);
+			//System.out.println(b);
 		}
 		while(queryResult.next())
 		{
@@ -51,45 +57,54 @@ public class BookDaoImpl implements BookDao
 				//System.out.println("Hi");
 			}
 		}
-		return null;
+		return list;
 	}
 
 	@Override
-	public String FavouriteBooks() throws Exception {
-		String foundType="";
+	public List<String> FavouriteBooks() throws Exception {
+//		String query = "select distinct favourite_books from Favourite_books";
+//		smt=con.prepareStatement(query);
+//		ResultSet queryResult = smt.executeQuery();
+//		List<Book> list = new ArrayList<>();
+//		if(queryResult.next())
+//		{
+//			Book b = new Book();
+//			b.s(queryResult.getString("favourite_books"));
+//			list.add(b);
+//		}
+//		return  list;
+//		String foundType="";
 		String query = "select distinct favourite_books from Favourite_books";
 		//String query = "select favourite_books, from Book where classid=? and absentdt>=? and absentdt<=";
 		smt=con.prepareStatement(query);
 		ResultSet queryResult = smt.executeQuery();
+		
+		List<String> list = new ArrayList<>();
 		while(queryResult.next())
 		{
+			Book b = new Book();
 			String res =queryResult.getString("favourite_books");
-			System.out.println(res);
+			list.add(res);
+			//System.out.println(res);
 		}
-		return null;
-//		int i=1;
-//		if(queryResult.next())
-//		{
-//			   foundType = queryResult.getString(i);
-//			   i++;
-//			   return foundType;
-//		}
-//		return null;
+		return list;
 	}
 
 	@Override
-	public String recomandedService() throws SQLException {
+	public List<String> recomandedService() throws SQLException {
 		String foundType="";
 		String query = "select distinct recomanded_books from Recomanded_books";
 		//String query = "select favourite_books, from Book where classid=? and absentdt>=? and absentdt<=";
 		smt=con.prepareStatement(query);
 		ResultSet queryResult = smt.executeQuery();
+		List<String> list = new ArrayList<>();
 		while(queryResult.next())
 		{
 			String res =queryResult.getString("recomanded_books");
-			System.out.println(res);
+			//System.out.println(res);
+			list.add(res);
 		}
-		return null;
+		return list;
 		
 	}
 

@@ -1,6 +1,7 @@
 package com.book.app.ui;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 import com.book.app.model.Book;
@@ -25,20 +26,26 @@ public class BookAppUi
 		System.out.println("Enter Author Details :  ");
 		System.out.print("Author ID : ");
 		int authorId=0;
-		Book book=null;
+		List<Book> book=null;
 		try
 		{
 			authorId=sc.nextInt();
-			
+			if(authorId>1000)
+			{
+				throw new InvalidAuthorIdException("Enter the auhtorId less than 1000 : "+authorId);
+			}
 		}
 		catch(AuthorNotFoundException e)
 		{
 			System.out.println(e.getMessage());
 			System.out.println("Handeled AuthorNotFoundException");
-			System.out.println("Invalid AuhtorId");
-			
+			System.out.println("Invalid AuhtorId");	
 		}
-		
+		catch(InvalidAuthorIdException e2)
+		{
+			System.out.println(e2.getMessage());
+			System.out.println("Handeled InvalidAuthorIdException");
+		}
 		try 
 		{
 			book = bService.searchByAuthor(authorId);
@@ -56,7 +63,7 @@ public class BookAppUi
 	public void displayFavouriteBooks() 
 	{
 		System.out.println("The Favourite Books are : ");
-		String book=null;
+		List<String> book=null;
 		try {
 			book = bService.FavouriteBooks();
 		} catch (Exception e) {
@@ -70,7 +77,7 @@ public class BookAppUi
 	public void displayRecomanded()
 	{
 		System.out.println("The Recomanded Books are : ");
-		String book=null;
+		List<String> book=null;
 		try {
 			book = bService.recomandedService();
 		} catch (Exception e) {

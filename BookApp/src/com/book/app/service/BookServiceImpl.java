@@ -1,6 +1,7 @@
 package com.book.app.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.book.app.dao.BookDao;
 import com.book.app.dao.BookDaoImpl;
@@ -16,24 +17,30 @@ public class BookServiceImpl implements BookService{
 		bookService = new BookDaoImpl();
 	}
 	
-	@Override
-	public Book searchByAuthor(int auhtorId) throws Exception {
-		return bookService.searchByAuthor(auhtorId);
-		
-	}
+	
 
 	
 
 	@Override
-	public String recomandedService() throws Exception {
+	public List<String> recomandedService() throws Exception {
 		
 		return bookService.recomandedService();
 	}
 
 	@Override
-	public String FavouriteBooks() throws Exception {
+	public List<String> FavouriteBooks() throws Exception {
 		
 		return bookService.FavouriteBooks();
+	}
+
+
+
+
+
+	@Override
+	public List<Book> searchByAuthor(int auhtorId) throws Exception {
+		
+		return bookService.searchByAuthor(auhtorId);
 	}
 
 	

@@ -13,9 +13,24 @@ public class BookAppRunner {
 		Scanner sc = new Scanner(System.in);
 		BookAppUi appUi=null;
 		appUi = new BookAppUi();
+		String str = "karthik";
+		System.out.println("Enter the UserName : ");
+		String userName = sc.nextLine();
+		System.out.println("Enter the Password :");
+		String password = sc.nextLine();
+		if(str.equalsIgnoreCase(password))
+		{
+			System.out.println("Login Successfull!!");
+			System.out.println();
+		}
+		else 
+		{
+			System.out.println("Wrong Password!!!");
+			System.exit(1);
+		}
 		while(true)
 		{
-			System.out.println("Enter a option : \n [1 - Display Favourite Books] \n [2 - Search By Authors] \n [3 -Display Recomandation] \n [0 - Exit] \n" );
+			System.out.println("Enter a option : \n [1 - Display Favourite Books] \n [2 - Search By Authors] \n [3 - Display Recomandation] \n [0 - Exit] \n" );
 			int option = sc.nextInt();
 			switch(option)
 			{
