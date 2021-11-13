@@ -128,6 +128,23 @@ public class BookDaoImpl implements BookDao
 
 
 
+	@Override
+	public Book addFavouriteBooks(Book book) throws Exception 
+	{
+		String query = "insert into favourite_books values(?,?)";
+		smt = con.prepareStatement(query);
+		smt.setString(1, book.getBookName());
+		smt.setInt(2, book.getBookId());
+		int rowCount = smt.executeUpdate();
+		if(rowCount>0)
+		{
+			return book;
+		}
+		return null;
+	}
+
+
+
 	
 	
 	

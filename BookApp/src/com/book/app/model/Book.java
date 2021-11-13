@@ -12,6 +12,13 @@ public class Book
 		
 	}
 	
+	public Book(String bookName, int bookId)
+	{
+		super();
+		this.bookName = bookName;
+		this.bookId = bookId;
+	}
+	
 	public Book(int bookId, String bookName, int authorId, String authorName) {
 		super();
 		this.bookId = bookId;

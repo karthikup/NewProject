@@ -30,7 +30,7 @@ public class BookAppRunner {
 		}
 		while(true)
 		{
-			System.out.println("Enter a option : \n [1 - Add Books] \n [2 - Display Favourite Books] \n [3 - Search By Authors] \n [4 - Display Recomandation] \n [0 - Exit] \n" );
+			System.out.println("Enter a option : \n [1 - Add Books] \n [2 - Display Favourite Books] \n [3 - Search By Authors] \n [4 - Display Recomandation] \n [5 - Add Favourite Books]\n [0 - Exit] \n" );
 			int option = sc.nextInt();
 			switch(option)
 			{
@@ -50,6 +50,9 @@ public class BookAppRunner {
 					break;
 				case 4:
 					appUi.displayRecomanded();
+					break;
+				case 5:
+					appUi.addFavourite();
 					break;
 				case 0:
 					System.exit(1);

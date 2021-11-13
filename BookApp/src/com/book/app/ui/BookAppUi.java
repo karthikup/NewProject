@@ -35,6 +35,30 @@ public class BookAppUi
 		authorId = sc.nextInt();
 		System.out.println("Enter the Author Name : ");
 		authorName = sc.next()+sc.nextLine();
+		
+		try
+		{
+			if(authorId>100)
+			{
+				throw new InvalidAuthorIdException("Enter the auhtorId less than 1000 : "+authorId);
+			}
+			if(id>10000)
+			{
+				throw new InvalidBookIdException("Enter the bookId less than 1000 : "+id);
+			}
+			
+		}
+		catch(InvalidBookIdException e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println("Handeled InvalidBookIdException");
+		}
+		catch(InvalidAuthorIdException e2)
+		{
+			System.out.println(e2.getMessage());
+			System.out.println("Handeled InvalidAuthorIdException");
+		}
+		
 		Book book = new Book(id, bookName, authorId, authorName);
 		Book savedBook;
 		try
@@ -42,6 +66,41 @@ public class BookAppUi
 			savedBook = bService.addBook(book);
 			System.out.println("Book Added Successfull!!");
 			System.out.println(savedBook);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void addFavourite()
+	{
+		System.out.println("Enter the Book Details : ");
+		System.out.println("Enter the Book Name : ");
+		String bookName = sc.next()+sc.nextLine();
+		System.out.println("Enter the Book Id : ");
+		int bookId = sc.nextInt();
+		
+		try
+		{
+			if(bookId>10000)
+			{
+				throw new InvalidBookIdException("Enter the bookId less than 1000 : "+bookId);
+			}
+		}
+		catch(InvalidBookIdException e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println("Handeled InvalidBookIdException");
+		}
+		
+		Book book = new Book(bookName, bookId);
+		Book savedFavourite;
+		try
+		{
+			savedFavourite = bService.addFavouriteBooks(book);
+			System.out.println("Book Added Successfully to Favourite list!!!");
+			System.out.println(savedFavourite);
 		}
 		catch(Exception e)
 		{
@@ -115,4 +174,7 @@ public class BookAppUi
 
 		System.out.println(book);
 	}
+	
+	
+	
 }

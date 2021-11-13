@@ -53,6 +53,16 @@ public class BookServiceImpl implements BookService{
 		return bookService.addBook(book);
 	}
 
+
+
+
+
+	@Override
+	public Book addFavouriteBooks(Book book) throws Exception {
+	
+		return bookService.addFavouriteBooks(book);
+	}
+
 	
 
 	
