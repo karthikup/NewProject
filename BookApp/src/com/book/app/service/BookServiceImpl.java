@@ -63,6 +63,16 @@ public class BookServiceImpl implements BookService{
 		return bookService.addFavouriteBooks(book);
 	}
 
+
+
+
+
+	@Override
+	public boolean deleteFavouriteBooks(Book book) throws Exception {
+		
+		return bookService.deleteFavouriteBooks(book);
+	}
+
 	
 
 	

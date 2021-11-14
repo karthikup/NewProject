@@ -145,6 +145,21 @@ public class BookDaoImpl implements BookDao
 
 
 
+	@Override
+	public boolean deleteFavouriteBooks(Book book) throws Exception {
+		String query = "delete from favourite_books where book_id = ?";
+		smt = con.prepareStatement(query);
+		smt.setInt(1, book.getBookId());
+		int rowCount = smt.executeUpdate();
+		if(rowCount==0)
+		{
+			return false;
+		}
+		return true;
+	}
+
+
+
 	
 	
 	

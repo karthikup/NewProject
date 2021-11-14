@@ -108,6 +108,36 @@ public class BookAppUi
 		}
 	}
 	
+	public void deleteFavourites()
+	{
+		System.out.println("Enter the Book Details : ");
+		System.out.println("Enter the Book Id : ");
+		int bookId = sc.nextInt();
+		Book book = new Book(bookId);
+		boolean deleteBook;
+		try
+		{
+			if(bookId>10000)
+			{
+				throw new InvalidBookIdException("Enter the bookId less than 1000 : "+bookId);
+			}
+		}
+		catch(InvalidBookIdException e)
+		{	System.out.println(e.getMessage());
+			System.out.println("Handeled InvalidBookIdException ");
+		}
+		try
+		{
+			deleteBook = bService.deleteFavouriteBooks(book);
+			System.out.println("Favourite Book Deleted Successfully!!");
+			System.out.println(deleteBook);
+		}
+		catch(Exception e1)
+		{	System.out.println(e1.getMessage());
+		}
+		
+	}
+	
 	public void searchAuthor() throws AuthorNotFoundException
 	{
 		System.out.println("Enter Author Details :  ");

@@ -12,7 +12,7 @@ class BookDaoImplTest {
 	Book b1 = new Book(1000,"Mahabharath",10,"Vyasa");
 	Book b = new Book();
 	
-	//BookDao book = new BookDaoImpl();
+//	BookDaoImpl book = new BookDaoImpl();
 
 	@Test
 	void searchBookContents()//to test test the content of the added Books

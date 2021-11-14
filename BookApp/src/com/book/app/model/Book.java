@@ -19,6 +19,12 @@ public class Book
 		this.bookId = bookId;
 	}
 	
+	public Book(int bookId)
+	{
+		super();
+		this.bookId = bookId;
+	}
+	
 	public Book(int bookId, String bookName, int authorId, String authorName) {
 		super();
 		this.bookId = bookId;

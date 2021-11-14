@@ -14,8 +14,11 @@ public class BookAppRunner {
 		BookAppUi appUi=null;
 		appUi = new BookAppUi();
 		String str = "karthik";
+		System.out.println("Welcome To BookApp!!!");
+		System.out.println("---------------------");
 		System.out.println("Enter the UserName : ");
 		String userName = sc.nextLine();
+		System.out.println();
 		System.out.println("Enter the Password :");
 		String password = sc.nextLine();
 		if(str.equalsIgnoreCase(password))
@@ -30,7 +33,7 @@ public class BookAppRunner {
 		}
 		while(true)
 		{
-			System.out.println("Enter a option : \n [1 - Add Books] \n [2 - Display Favourite Books] \n [3 - Search By Authors] \n [4 - Display Recomandation] \n [5 - Add Favourite Books]\n [0 - Exit] \n" );
+			System.out.println("Enter a option : \n [1 - Add Books] \n [2 - Display Favourite Books] \n [3 - Search By Authors] \n [4 - Display Recomandation] \n [5 - Add Favourite Books]\n [6 - Delete Favourite Book] \n [0 - Exit] \n" );
 			int option = sc.nextInt();
 			switch(option)
 			{
@@ -53,6 +56,9 @@ public class BookAppRunner {
 					break;
 				case 5:
 					appUi.addFavourite();
+					break;
+				case 6:
+					appUi.deleteFavourites();
 					break;
 				case 0:
 					System.exit(1);

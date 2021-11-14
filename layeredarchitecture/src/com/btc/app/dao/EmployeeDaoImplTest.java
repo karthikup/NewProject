@@ -10,7 +10,7 @@ import com.btc.app.model.Employee;
 
 class EmployeeDaoImplTest {
 	
-	//EmployeeDao dao = new EmployeeDaoSqlImpl();
+//	EmployeeDao dao = new EmployeeDaoSqlImpl();
 
 	@Test
 	void testAddEmployee() {
