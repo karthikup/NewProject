@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.book.app.ui.AuthorNotFoundException;
 import com.book.app.ui.BookAppUi;
+import com.book.app.ui.InputMissMatchException;
 
 public class BookAppRunner {
 
@@ -44,12 +45,7 @@ public class BookAppRunner {
 					appUi.displayFavouriteBooks();
 					break;
 				case 3:
-				try {
 					appUi.searchAuthor();
-				} catch (AuthorNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 					break;
 				case 4:
 					appUi.displayRecomanded();

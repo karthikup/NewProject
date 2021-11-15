@@ -1,6 +1,7 @@
 package com.book.app.ui;
 
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,11 +29,27 @@ public class BookAppUi
 		Book b = new Book();
 		System.out.println("Enter the Book Details :");
 		System.out.println("Enter the Book Id : ");
-		id = sc.nextInt();
+		try
+		{
+			id = sc.nextInt();
+		}
+		catch(InputMismatchException e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println("Handeled InputMissMatchException");
+		}
 		System.out.println("Enter the Book Name : ");
 		bookName = sc.next()+sc.nextLine();
 		System.out.println("Enter the Auhtor Id : ");
-		authorId = sc.nextInt();
+		
+			authorId = sc.nextInt();
+			//throw new InputMissMatchException("Enter the Integer value : "+id);
+		
+//		catch(InputMissMatchException e)
+//		{
+//			System.out.println(e.getMessage());
+//			System.out.println("Handeled InputMissMatchException");
+//		}
 		System.out.println("Enter the Author Name : ");
 		authorName = sc.next()+sc.nextLine();
 		
@@ -79,8 +96,16 @@ public class BookAppUi
 		System.out.println("Enter the Book Name : ");
 		String bookName = sc.next()+sc.nextLine();
 		System.out.println("Enter the Book Id : ");
-		int bookId = sc.nextInt();
-		
+		int bookId=0;
+		try
+		{
+			bookId = sc.nextInt();
+		}
+		catch(InputMismatchException e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println("Handeled InputMismatchException");
+		}
 		try
 		{
 			if(bookId>10000)
@@ -112,7 +137,16 @@ public class BookAppUi
 	{
 		System.out.println("Enter the Book Details : ");
 		System.out.println("Enter the Book Id : ");
-		int bookId = sc.nextInt();
+		int bookId=0;
+		try
+		{
+			bookId = sc.nextInt();
+		}
+		catch(InputMismatchException e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println("Handeled InputMisMatchException");
+		}
 		Book book = new Book(bookId);
 		boolean deleteBook;
 		try
@@ -138,26 +172,35 @@ public class BookAppUi
 		
 	}
 	
-	public void searchAuthor() throws AuthorNotFoundException
+	public void searchAuthor() 
 	{
 		System.out.println("Enter Author Details :  ");
 		System.out.print("Author ID : ");
 		int authorId=0;
-		List<Book> book=null;
 		try
 		{
 			authorId=sc.nextInt();
+		}
+		catch(InputMismatchException e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println("Handeled InputMissMatchException");
+		}
+		List<Book> book=null;
+		try
+		{
+			
 			if(authorId>1000)
 			{
 				throw new InvalidAuthorIdException("Enter the auhtorId less than 1000 : "+authorId);
 			}
 		}
-		catch(AuthorNotFoundException e)
-		{
-			System.out.println(e.getMessage());
-			System.out.println("Handeled AuthorNotFoundException");
-			System.out.println("Invalid AuhtorId");	
-		}
+//		catch(AuthorNotFoundException e)
+//		{
+//			System.out.println(e.getMessage());
+//			System.out.println("Handeled AuthorNotFoundException");
+//			System.out.println("Invalid AuhtorId");	
+//		}
 		catch(InvalidAuthorIdException e2)
 		{
 			System.out.println(e2.getMessage());
